@@ -5,6 +5,7 @@ type goMath struct {
 	Sub func(a, b int) int
 	Mul func(a, b int) int
 	Div func(a, b int) int
+	Pow func(a, b int) int
 }
 
 func New() goMath {
@@ -13,6 +14,7 @@ func New() goMath {
 		Sub: sub,
 		Mul: mul,
 		Div: div,
+		Pow: pow,
 	}
 }
 
@@ -30,4 +32,18 @@ func mul(a, b int) int {
 
 func div(a, b int) int {
 	return a / b
+}
+
+func pow(a, b int) int {
+	var result int = 1
+	if a == 0 {
+		return 0
+	}
+	if b == 0 {
+		return 1
+	}
+	for i := 1; i <= b; i++ {
+		result = result * a
+	}
+	return result
 }
